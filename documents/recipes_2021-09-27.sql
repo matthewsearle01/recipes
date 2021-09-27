@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.7.35)
 # Database: recipes
-# Generation Time: 2021-09-27 11:26:25 +0000
+# Generation Time: 2021-09-27 13:23:18 +0000
 # ************************************************************
 
 
@@ -32,14 +32,14 @@ CREATE TABLE `recipe_data` (
   `ingredients` text,
   `method` text,
   `imagelink` varchar(500) DEFAULT NULL,
-  `cooktime (mins)` int(11) DEFAULT NULL,
+  `cooktime` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 LOCK TABLES `recipe_data` WRITE;
 /*!40000 ALTER TABLE `recipe_data` DISABLE KEYS */;
 
-INSERT INTO `recipe_data` (`id`, `name`, `ingredients`, `method`, `imagelink`, `cooktime (mins)`)
+INSERT INTO `recipe_data` (`id`, `name`, `ingredients`, `method`, `imagelink`, `cooktime`)
 VALUES
 	(1,'Tomato & Lentil Soup','1 tbsp coconut oil|2 onions|5 garlic cloves (minced)|1 tbsp fresh grated ginger|1 tbsp ground cumin|pinch cayenne pepper|pinch salt|1 can chopped tomatoes|1 small lemon|1 cup red lentils|4 cups veg broth|maple syrup|coriander leaves / sour cream to serve','Saute oil, onions, garlic & ginger in a deep pan|Add salt, cumin and cayenne pepper|Add chopped tomatoes, lemon, lentils & veg broth|Simmer for 30 mins and add maple syrup to balance flavour|Garnish with coriander & sour cream','https://i.imgur.com/nU5GuvS.png',45),
 	(2,'Quinoa Patties','340g cooked quinoa|4 large eggs|1.2 tsp sea salt|15g fresh chives|1 onion|15g grated parmesan or gruyere (feta is also great)|3 garlic cloves|100g wholegrain breadcrumbs|1 tbsp olive oil or 20g butter','Combine the quinoa, eggs and salt in a bowl|Stir in the chives, onion, cheese and garlic|Add the breadcrumbs, stir and set aside|Heat the oil in a pan and spoon out patty size portions|Flatten with a spatula and fry both sides until golden brown|Lovely served with hummus, salad, tomato & mozzerella','https://i.imgur.com/sN96xl0.png',50),
