@@ -28,7 +28,6 @@
     printAllRecipes();
     echo '</div>';
     ?>
-
 </body>
 
 </html>
