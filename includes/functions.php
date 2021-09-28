@@ -14,10 +14,10 @@ function getData($db)
 function getRecipeName(int $id, $db)
 {
     $result = getData($db);
-        echo '<h1>';
-        echo $result[$id]['name'];
-        echo '</h1>';
-        echo '<h3><br>Cooktime: ' . $result[$id]['cooktime'] . ' mins</h3>';
+    echo '<h1>';
+    echo $result[$id]['name'];
+    echo '</h1>';
+    echo '<h3><br>Cooktime: ' . $result[$id]['cooktime'] . ' mins</h3>';
 }
 
 function getIngredients(int $id, $db) {
@@ -30,7 +30,7 @@ function getIngredients(int $id, $db) {
             echo '<li>';
             echo $item;
             echo '</li>';
-            }
+        }
         echo '</ul>';
     }
 
