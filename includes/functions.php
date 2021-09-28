@@ -1,92 +1,66 @@
 <?php
 
-function getRecipeCount($db) {
+require_once ('dbconnection.php');
+
+function getData($db)
+{
     // PDO QUERY
     $query = $db->prepare('SELECT * FROM recipe_data');
     $query->execute();
     $result = $query->fetchAll();
-    return sizeof($result);
+    return $result;
 }
 
-function getRecipeName(int $id, $db) {
-    $idArray = [];
-    array_push($idArray, $id);
-    // PDO QUERY
-    $query = $db->prepare('SELECT name, cooktime FROM recipe_data WHERE id=?');
-    $query->execute($idArray);
-    $result = $query->fetchAll();
-    foreach ($result as $name) {
+function getRecipeName(int $id, $db)
+{
+    $result = getData($db);
         echo '<h1>';
-        echo $name['name'];
+        echo $result[$id]['name'];
         echo '</h1>';
-        echo '<h3><br>Cooktime: ' . $name['cooktime'] . ' mins</h3>';
-    }
+        echo '<h3><br>Cooktime: ' . $result[$id]['cooktime'] . ' mins</h3>';
 }
 
 function getIngredients(int $id, $db) {
-    $idArray = [];
-    array_push($idArray, $id);
-    // PDO QUERY
-    $query = $db->prepare('SELECT ingredients FROM recipe_data WHERE id=?');
-    $query->execute($idArray);
-    $result = $query->fetchAll();
+    $result = getData($db);
+    $ingredients = explode('|', $result[$id]['ingredients']);
     // iterate through returned data and print as un-ordered list
-    foreach ($result as $dish) {
         echo '<h4>Ingredients</h4>';
         echo '<ul>';
-        foreach ($dish as $items) {
-            $items = explode('|', $items);
-            foreach ($items as $item) {
-                echo '<li>';
-                echo $item;
-                echo '</li>';
+        foreach ($ingredients as $item) {
+            echo '<li>';
+            echo $item;
+            echo '</li>';
             }
-        };
         echo '</ul>';
     }
-}
 
 function getMethod(int $id, $db) {
-    $idArray = [];
-    array_push($idArray, $id);
-    // PDO QUERY
-    $query = $db->prepare('SELECT method FROM recipe_data WHERE id=?');
-    $query->execute($idArray);
-    $result = $query->fetchAll();
+    $result = getData($db);
+    $method = explode('|', $result[$id]['method']);
     // iterate through returned data and print as ordered list
-    foreach ($result as $dish) {
-        echo '<h4>Method</h4>';
-        echo '<ol>';
-        foreach ($dish as $items) {
-            $items = explode('|', $items);
-            foreach ($items as $item) {
-                echo '<li>';
-                echo $item;
-                echo '</li>';
-            }
-        };
-        echo '</ol>';
+    echo '<h4>Method</h4>';
+    echo '<ol>';
+    foreach ($method as $item) {
+        echo '<li>';
+        echo $item;
+        echo '</li>';
     }
+    echo '</ol>';
 }
 
 function getImage(int $id, $db)
 {
-    $idArray = [];
-    array_push($idArray, $id);
-    // PDO QUERY
-    $query = $db->prepare('SELECT imagelink FROM recipe_data WHERE id=?');
-    $query->execute($idArray);
-    $result = $query->fetchAll();
-    foreach ($result as $image) {
-        echo '<img src="';
-        echo $image['imagelink'];
-        echo '" alt="picture of the meal">';
-    };
+    $result = getData($db);
+    $image = $result[$id]['imagelink'];
+    echo '<img src="';
+    echo $image;
+    echo '" alt="picture of the meal">';
 }
 
-function printAllRecipes($db) {
-    $howMany = getRecipeCount($db);
-    for ($i = 1; $i <= $howMany; $i++) {
+function printAllRecipes($db)
+{
+    $result = getData($db);
+    for ($i = 0; $i < sizeof($result); $i++) {
         echo '<div class="recipe-card">';
         getImage($i, $db);
         getRecipeName($i, $db);
@@ -95,14 +69,3 @@ function printAllRecipes($db) {
         echo '</div>';
     }
 }
-
-function printRecipe(int $id, $db) {
-    echo '<div class="recipe-card">';
-    getImage($id);
-    getRecipeName($id);
-    getIngredients($id);
-    getMethod($id);
-    echo '</div>';
-    };
-
-

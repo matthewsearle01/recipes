@@ -1,3 +1,8 @@
+<?php
+require_once ('includes/dbconnection.php');
+require_once ('includes/functions.php');
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -8,10 +13,6 @@
     <link rel="shortcut icon" type="image/jpg" href="images/favicon.svg"/>
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/styles.css?v=<?php echo time(); ?>">
-    <?php
-    require_once ('includes/dbconnection.php');
-    require_once ('includes/functions.php');
-    ?>
 </head>
 
 <body>

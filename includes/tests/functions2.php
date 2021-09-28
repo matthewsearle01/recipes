@@ -1,6 +1,6 @@
 <?php
 
-require '../includes/functions.php';
+require '../functions.php';
 
 use PHPUnit\Framework\TestCase;
 
