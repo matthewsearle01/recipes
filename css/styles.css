@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;1,100;1,200;1,300;1,400;1,500&display=swap');
 
 body {
     background-color: #ffdd9c;
-    font-family: 'Bodoni Moda', serif;
-    font-size: 18px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
     color: black;
     /* Hide scrollbar for IE, Edge and Firefox */
     -ms-overflow-style: none;
@@ -15,6 +15,14 @@ body {
 
 body::-webkit-scrollbar {
     display: none;
+}
+
+h1 {
+    font-family: 'Bodoni Moda', serif;
+}
+
+.title {
+    min-width: 25%;
 }
 
 .title-menu {
@@ -38,9 +46,10 @@ body::-webkit-scrollbar {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    width: 35%;
+    width: 30%;
     padding: 1rem;
     margin: 15px;
+    box-shadow: 5px 10px;
 }
 
 img {
@@ -52,10 +61,14 @@ img {
 a {
     text-decoration: none;
     color: black;
+    font-size: 1rem;
 }
 
-h1 {
-    /*text-decoration: underline;*/
+button {
+    background-color: #fff0b9;
+    padding: 0.5rem;
+    border: black 3px solid;
+    border-radius: 20px;
 }
 
 .button {
@@ -69,10 +82,64 @@ h1 {
     background-color: #f5b047;
 }
 
-@media screen and (max-width: 900px) {
+.form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+input {
+    width: 100%;
+}
+
+textarea {
+    width: 100%;
+}
+
+h1.add-recipe-title {
+    text-decoration: underline;
+}
+button {
+    padding: 1rem;
+}
+
+.form-buttons {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+button:hover {
+    background-color: #f5b047;
+}
+
+/* Mobile Fun */
+
+
+@media screen and (max-width: 1400px) {
 
     .recipe-card {
-        width: 90vw;
+        width: 40%;
+    }
+
+    .title {
+        width: 35%;
     }
 
 }
+
+@media screen and (max-width: 900px) {
+
+    .recipe-card {
+        width: 100%;
+        margin: 0.2rem;
+    }
+
+    .title {
+        width: 50%;
+    }
+
+}
+
