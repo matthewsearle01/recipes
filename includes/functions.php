@@ -1,9 +1,6 @@
 <?php
 
-include ('includes/dbconnection.php');
-
-function getRecipeCount() {
-    include ('includes/dbconnection.php');
+function getRecipeCount($db) {
     // PDO QUERY
     $query = $db->prepare('SELECT * FROM recipe_data');
     $query->execute();
@@ -11,8 +8,7 @@ function getRecipeCount() {
     return sizeof($result);
 }
 
-function getRecipeName(int $id) {
-    include ('includes/dbconnection.php');
+function getRecipeName(int $id, $db) {
     $idArray = [];
     array_push($idArray, $id);
     // PDO QUERY
@@ -27,8 +23,7 @@ function getRecipeName(int $id) {
     }
 }
 
-function getIngredients(int $id) {
-    include ('includes/dbconnection.php');
+function getIngredients(int $id, $db) {
     $idArray = [];
     array_push($idArray, $id);
     // PDO QUERY
@@ -51,8 +46,7 @@ function getIngredients(int $id) {
     }
 }
 
-function getMethod(int $id) {
-    include ('includes/dbconnection.php');
+function getMethod(int $id, $db) {
     $idArray = [];
     array_push($idArray, $id);
     // PDO QUERY
@@ -75,9 +69,8 @@ function getMethod(int $id) {
     }
 }
 
-function getImage(int $id)
+function getImage(int $id, $db)
 {
-    include('includes/dbconnection.php');
     $idArray = [];
     array_push($idArray, $id);
     // PDO QUERY
@@ -87,25 +80,23 @@ function getImage(int $id)
     foreach ($result as $image) {
         echo '<img src="';
         echo $image['imagelink'];
-        echo '">';
+        echo '" alt="picture of the meal">';
     };
 }
 
-function printAllRecipes() {
-    include ('includes/dbconnection.php');
-    $howMany = getRecipeCount();
+function printAllRecipes($db) {
+    $howMany = getRecipeCount($db);
     for ($i = 1; $i <= $howMany; $i++) {
         echo '<div class="recipe-card">';
-        getImage($i);
-        getRecipeName($i);
-        getIngredients($i);
-        getMethod($i);
+        getImage($i, $db);
+        getRecipeName($i, $db);
+        getIngredients($i, $db);
+        getMethod($i, $db);
         echo '</div>';
     }
 }
 
-function printRecipe(int $id) {
-    include ('includes/dbconnection.php');
+function printRecipe(int $id, $db) {
     echo '<div class="recipe-card">';
     getImage($id);
     getRecipeName($id);
