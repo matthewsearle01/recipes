@@ -1,71 +1,71 @@
 <?php
 
-require_once ('dbconnection.php');
-
 function getData($db)
 {
     // PDO QUERY
-    $query = $db->prepare('SELECT * FROM recipe_data');
+    $query = $db->prepare('SELECT id, name, ingredients, method, cooktime, imagelink FROM recipe_data');
     $query->execute();
     $result = $query->fetchAll();
     return $result;
 }
 
-function getRecipeName(int $id, $db)
+function formatRecipeName(array $row) : string
 {
-    $result = getData($db);
-    echo '<h1>';
-    echo $result[$id]['name'];
-    echo '</h1>';
-    echo '<h3><br>Cooktime: ' . $result[$id]['cooktime'] . ' mins</h3>';
+    $str = '<h1>';
+    $str .= $row['name'];
+    $str .= '</h1>';
+    $str .= '<h3>Cooktime: ' . $row['cooktime'] . ' mins</h3>';
+    return $str;
 }
 
-function getIngredients(int $id, $db) {
-    $result = getData($db);
-    $ingredients = explode('|', $result[$id]['ingredients']);
-    // iterate through returned data and print as un-ordered list
-        echo '<h4>Ingredients</h4>';
-        echo '<ul>';
-        foreach ($ingredients as $item) {
-            echo '<li>';
-            echo $item;
-            echo '</li>';
-        }
-        echo '</ul>';
+function formatIngredients(array $row) {
+    $ingredients = explode('|', $row['ingredients']);
+    $str = '<h4>Ingredients</h4>';
+    $str .= '<ul>';
+    foreach ($ingredients as $item) {
+        $str .= '<li>';
+        $str .= $item;
+        $str .= '</li>';
     }
+    $str .= '</ul>';
+    return $str;
+}
 
-function getMethod(int $id, $db) {
-    $result = getData($db);
-    $method = explode('|', $result[$id]['method']);
-    // iterate through returned data and print as ordered list
-    echo '<h4>Method</h4>';
-    echo '<ol>';
+function formatMethod(array $row) {
+    $method = explode('|', $row['method']);
+    $str = '<h4>Method</h4>';
+    $str .= '<ol>';
     foreach ($method as $item) {
-        echo '<li>';
-        echo $item;
-        echo '</li>';
+        $str .= '<li>';
+        $str .= $item;
+        $str .= '</li>';
     }
-    echo '</ol>';
+    $str .= '</ol>';
+    return $str;
 }
 
-function getImage(int $id, $db)
+function formatImage(array $row)
 {
-    $result = getData($db);
-    $image = $result[$id]['imagelink'];
-    echo '<img src="';
-    echo $image;
-    echo '" alt="picture of the meal">';
+    if ($row['imagelink'] == null) {
+        $image = 'http://placehold.jp/936x900.png';
+    } else {
+        $image = $row['imagelink'];
+    };
+    $str = '<img src="';
+    $str .= $image;
+    $str .= '" alt="picture of ' . $row['name'] . '">';
+    return $str;
 }
 
 function printAllRecipes($db)
 {
     $result = getData($db);
-    for ($i = 0; $i < sizeof($result); $i++) {
+    foreach ($result as $row) {
         echo '<div class="recipe-card">';
-        getImage($i, $db);
-        getRecipeName($i, $db);
-        getIngredients($i, $db);
-        getMethod($i, $db);
+        echo formatImage($row);
+        echo formatRecipeName($row);
+        echo formatIngredients($row);
+        echo formatMethod($row);
         echo '</div>';
     }
 }

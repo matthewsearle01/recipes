@@ -19,6 +19,12 @@ body::-webkit-scrollbar {
 
 h1 {
     font-family: 'Bodoni Moda', serif;
+    padding: 0;
+    margin: 0.5em 0 0 0;
+}
+
+h4 {
+    margin: 0;
 }
 
 .title {
@@ -47,8 +53,8 @@ h1 {
     flex-direction: column;
     flex-wrap: wrap;
     width: 30%;
-    padding: 1rem;
-    margin: 15px;
+    padding: 0.75rem;
+    margin: 0.75rem;
     box-shadow: 5px 10px;
 }
 
