@@ -34,8 +34,6 @@ class functions extends TestCase
         $this->expectException(TypeError::class);
         //act
         $result = formatRecipeName($input);
-
-        //assert
     }
 
     //formatIngredients success test:
