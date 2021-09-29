@@ -21,7 +21,7 @@ require_once ('includes/functions.php');
       <a href="index.php"><img src="images/logo.png" alt="Your Kitchen logo"></a>
     </div>
     <div class="add-new">
-      <a href="newEntry.php"><div class="button">Add New Recipe</div></a>
+      <a href="addEntry.php"><div class="button">Add New Recipe</div></a>
     </div>
 </div>
     <?php

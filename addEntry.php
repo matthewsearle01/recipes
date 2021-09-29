@@ -23,7 +23,7 @@ require_once ('includes/functions.php');
 </div>
 
 <div class="form">
-    <form method="post" action="newrecipe.php">
+    <form method="post" action="newRecipeUpload.php">
         <h1 class="add-recipe-title">Add New Recipe</h1>
         <section>
             <h2>Name</h2>
@@ -32,7 +32,7 @@ require_once ('includes/functions.php');
             </p>
         </section>
         <section>
-            <h2>Cooking Time</h2>
+            <h2>Cooking Time (mins)</h2>
             <p>
                 <input type="text" id="cooktime" name="cooktime">
             </p>
@@ -40,13 +40,13 @@ require_once ('includes/functions.php');
         <section>
             <h2>Ingredients</h2>
             <p>
-                <textarea id="ingredients" name="ingredients" aria-label="Ingredients"></textarea>
+                <textarea id="ingredients" name="ingredients"></textarea>
             </p>
         </section>
         <section>
             <h2>Method</h2>
             <p>
-                <textarea id="method" name="method" aria-label="Method"></textarea>
+                <textarea id="method" name="method"></textarea>
             </p>
         </section>
         <section>
