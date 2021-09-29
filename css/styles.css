@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;1,100;1,200;1,300;1,400;1,500&display=swap');
+
+body {
+    background-color: #ffdd9c;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    color: black;
+    /* Hide scrollbar for IE, Edge and Firefox */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+h1 {
+    font-family: 'Bodoni Moda', serif;
+    padding: 0;
+    margin: 0.5em 0 0 0;
+}
+
+h4 {
+    margin: 0;
+}
+
+.title {
+    min-width: 25%;
+}
+
+.title-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main-section {
+    background-color: #ffdd9c;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.recipe-card {
+    background-color: #fff0b9;
+    border: black 4px solid;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 30%;
+    padding: 0.75rem;
+    margin: 0.75rem;
+    box-shadow: 5px 10px;
+}
+
+img {
+    height: auto;
+    width: 100%;
+    border-radius: 50px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+    font-size: 1rem;
+}
+
+button {
+    background-color: #fff0b9;
+    border: black 3px solid;
+    border-radius: 20px;
+    padding: 1rem;
+}
+
+.button {
+    background-color: #fff0b9;
+    padding: 0.5rem;
+    border: black 3px solid;
+    border-radius: 20px;
+}
+
+.button:hover {
+    background-color: #f5b047;
+}
+
+.form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+input {
+    width: 100%;
+}
+
+textarea {
+    width: 100%;
+}
+
+h1.add-recipe-title {
+    text-decoration: underline;
+}
+
+.form-buttons {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+button:hover {
+    background-color: #f5b047;
+}
+
+/* Mobile Fun */
+
+
+@media screen and (max-width: 1400px) {
+
+    .recipe-card {
+        width: 40%;
+    }
+
+    .title {
+        width: 35%;
+    }
+
+}
+
+@media screen and (max-width: 900px) {
+
+    .recipe-card {
+        width: 100%;
+        margin: 0.2rem;
+    }
+
+    .title {
+        width: 50%;
+    }
+
+}
+
