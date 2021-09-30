@@ -1,15 +1,15 @@
 <?php
 
-function getData(PDO $db)
+function getData(PDO $db): array
 {
     // PDO QUERY
-    $query = $db->prepare('SELECT id, name, ingredients, method, cooktime, imagelink FROM recipe_data');
+    $query = $db->prepare('SELECT `id`, `name`, `ingredients`, `method`, `cooktime`, `imagelink`, `deleted` FROM recipe_data WHERE `deleted` = 0;');
     $query->execute();
     $result = $query->fetchAll();
     return $result;
 }
 
-function formatRecipeName(array $row) : string
+function formatRecipeName(array $row): string
 {
     $str = '<h1>';
     $str .= $row['name'];
@@ -57,7 +57,7 @@ function formatImage(array $row)
     return $str;
 }
 
-function printAllRecipes(PDO $db)
+function printAllRecipes(PDO $db): void
 {
     $result = getData($db);
     foreach ($result as $row) {
@@ -84,3 +84,4 @@ function addNewRecipe(PDO $db, array $newRecipe): bool {
 
     return $query->execute([$name, $cooktime, $ingredients, $method, $imagelink]);
 }
+
