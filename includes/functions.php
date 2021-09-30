@@ -57,6 +57,24 @@ function formatImage(array $row)
     return $str;
 }
 
+function createDeleteButton(array $row) {
+    $str = '<div>
+                <form method="post" action="removeCard.php">
+                    <input type="hidden" name="id" value="' . $row['id'] .'">
+                    <input type="submit" class="button" name="delete" value="Delete">
+                </form>
+            </div>';
+    return $str;
+}
+
+function deleteRecipe(PDO $db, array $recipe)
+{
+    if (isset($_POST['delete'])) {
+        $query = $db->prepare('UPDATE `recipe_data` SET `deleted` = 1 WHERE `id` = ?');
+        $query->execute([$recipe['id']]);
+    }
+}
+
 function printAllRecipes(PDO $db): void
 {
     $result = getData($db);
@@ -66,6 +84,7 @@ function printAllRecipes(PDO $db): void
         echo formatRecipeName($row);
         echo formatIngredients($row);
         echo formatMethod($row);
+        echo createDeleteButton($row);
         echo '</div>';
     }
 }
@@ -84,4 +103,3 @@ function addNewRecipe(PDO $db, array $newRecipe): bool {
 
     return $query->execute([$name, $cooktime, $ingredients, $method, $imagelink]);
 }
-
