@@ -18,7 +18,7 @@ require_once ('includes/functions.php');
 <body>
 <div class="title-menu">
     <div class="title">
-        <a href="index.php"><img src="images/logo.png"></a>
+        <a href="index.php"><img src="images/logo.png" alt="your kitchen logo"></a>
     </div>
 </div>
 
@@ -34,25 +34,25 @@ require_once ('includes/functions.php');
         <section>
             <h2>Cooking Time (mins)</h2>
             <p>
-                <input type="text" id="cooktime" name="cooktime">
+                <input type="number" steps="1" id="cooktime" name="cooktime">
             </p>
         </section>
         <section>
             <h2>Ingredients</h2>
             <p>
-                <textarea id="ingredients" name="ingredients"></textarea>
+                <textarea id="ingredients" type="text" name="ingredients"></textarea>
             </p>
         </section>
         <section>
             <h2>Method</h2>
             <p>
-                <textarea id="method" name="method"></textarea>
+                <textarea id="method" type="text" name="method"></textarea>
             </p>
         </section>
         <section>
             <h2>Image URL</h2>
             <p>
-                <input type="text" id="image" name="imagelink">
+                <input type="url" id="image" name="imagelink">
             </p>
         </section>
         <div class="form-buttons">
