@@ -23,12 +23,12 @@ require_once ('includes/functions.php');
     <div class="add-new">
       <a href="addEntry.php"><div class="button">Add New Recipe</div></a>
     </div>
-</div>
-    <?php
-    echo '<div class="main-section">';
-    printAllRecipes($db);
-    echo '</div>';
-    ?>
+  </div>
+  <?php
+  echo '<div class="main-section">';
+  printAllRecipes($db);
+  echo '</div>';
+  ?>
 </body>
 
 </html>
